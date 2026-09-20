@@ -28,7 +28,6 @@ services:
     name: mailflow-frontend
     runtime: static
     rootDir: frontend
-    plan: free
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
     routes:
@@ -37,10 +36,7 @@ services:
         destination: "/index.html"
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: mailflow-backend
-          property: host
+        sync: false
 
 databases:
   # 3. Managed PostgreSQL Database
